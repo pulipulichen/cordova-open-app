@@ -465,10 +465,10 @@ var MobileApp = {
             newUrl += (search) ? "&" : "?";
             newUrl += "_cordova=true";
         }
-        MobileApp.showFrame(newUrl, loginUrl, credentials);
+        MobileApp.showFrame(newUrl, loginUrl, credentials, username, password);
     },
 
-    showFrame: function(url, loginUrl, credentials) {
+    showFrame: function(url, loginUrl, credentials, username, password) {
         // implementation using InAppBrowser plugin https://cordova.apache.org/docs/en/latest/reference/cordova-plugin-inappbrowser/
         // use InAppBrowser.executeScript method because session cookies are not passed over to the webview
         var inAppBrowser = (typeof cordova !== "undefined") ? cordova.InAppBrowser : window;
