@@ -38,3 +38,6 @@ input.form-check-input:checked {
     background-color: teal !important;
     border-color: teal !important;
 }
+button.btn-close{
+    color: #fff !important;
+}
