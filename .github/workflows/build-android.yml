@@ -85,6 +85,7 @@ jobs:
           cordova plugin add https://github.com/napolitano/cordova-plugin-intent
           cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --variable URL_SCHEME=openapp
           cordova plugin add https://github.com/nchutchind/cordova-plugin-app-launcher.git
+          cordova prepare
 
       - name: Build Android release APK
         run: |
