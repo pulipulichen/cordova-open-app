@@ -83,7 +83,7 @@ jobs:
         run: |
           cordova plugin add github:cordova-misc/cordova-webintent.git
           cordova plugin add https://github.com/napolitano/cordova-plugin-intent
-          cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --variable URL_SCHEME=open_app
+          cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --variable URL_SCHEME=openapp
 
       - name: Build Android release APK
         run: cordova build android --release -- --keystore=android.keystore --storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} --alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} --password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} --packageType=apk

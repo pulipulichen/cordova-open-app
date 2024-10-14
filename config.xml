@@ -29,6 +29,9 @@
     </feature>
     <content src="index.html" />
     <icon src="res/logo_120x120.png" />
+    <plugin name="cordova-plugin-custom-url-scheme" spec="^5.0.0">
+        <variable name="URL_SCHEME" value="openapp" />
+    </plugin>
     <platform name="android">
         <resource-file src="android-google-services.json" target="app/google-services.json" />
         <resource-file src="res/xml/file_paths.xml" target="app/src/main/res/xml/file_paths.xml" />
@@ -89,12 +92,13 @@
             <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
         </edit-config>
         
+        <!--
         <edit-config file="AndroidManifest.xml"
                      target="/manifest/application"
                      mode="merge">
             <application android:theme="@android:style/Theme.Translucent" android:excludeFromRecents="true"></application>
         </edit-config>
-        <!--
+        
         <edit-config file="AndroidManifest.xml"
                      target="/manifest/application/activity"
                      mode="merge">
