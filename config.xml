@@ -29,12 +29,6 @@
     </feature>
     <content src="index.html" />
     <icon src="res/logo_120x120.png" />
-    <!-- https://github.com/cordova-misc/cordova-webintent -->
-    <plugin spec="https://github.com/cordova-misc/cordova-webintent.git" source="git" />
-    
-    <!-- https://github.com/napolitano/cordova-plugin-intent -->
-    <plugin spec="https://github.com/napolitano/cordova-plugin-intent.git" source="git" />
-
     <platform name="android">
         <resource-file src="android-google-services.json" target="app/google-services.json" />
         <resource-file src="res/xml/file_paths.xml" target="app/src/main/res/xml/file_paths.xml" />

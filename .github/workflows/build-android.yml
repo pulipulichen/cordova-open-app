@@ -76,7 +76,10 @@ jobs:
         run: cordova plugin add cordova-plugin-camera@6.0.0
 
       - name: Add cordova-plugin-android-permissions
-        run: cordova plugin add cordova-plugin-android-permissions@1.1.5
+        run: |
+          cordova plugin add cordova-plugin-android-permissions@1.1.5
+          cordova plugin add github:cordova-misc/cordova-webintent.git
+          cordova plugin add https://github.com/napolitano/cordova-plugin-intent
 
       - name: Build Android release APK
         run: cordova build android --release -- --keystore=android.keystore --storePassword=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} --alias=${{ secrets.ANDROID_KEYSTORE_ALIAS }} --password=${{ secrets.ANDROID_KEYSTORE_PASSWORD }} --packageType=apk
