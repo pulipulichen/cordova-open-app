@@ -14,7 +14,8 @@
     <preference name="DisallowOverscroll" value="true" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarBackgroundColor" value="0x00000000" />
+    <preference name="BackgroundColor" value="0x00000000"/>
     <preference name="StatusBarStyle" value="blacktranslucent" />
     <preference name="EnableViewportScale" value="true" />
     <preference name="scheme" value="app" />
@@ -28,6 +29,12 @@
     </feature>
     <content src="index.html" />
     <icon src="res/logo_120x120.png" />
+    <!-- https://github.com/cordova-misc/cordova-webintent -->
+    <plugin spec="https://github.com/cordova-misc/cordova-webintent.git" source="git" />
+    
+    <!-- https://github.com/napolitano/cordova-plugin-intent -->
+    <plugin spec="https://github.com/napolitano/cordova-plugin-intent.git" source="git" />
+
     <platform name="android">
         <resource-file src="android-google-services.json" target="app/google-services.json" />
         <resource-file src="res/xml/file_paths.xml" target="app/src/main/res/xml/file_paths.xml" />
@@ -69,6 +76,7 @@
             <uses-permission android:name="android.permission.CAMERA" />
             <uses-permission android:name="android.permission.RECORD_AUDIO" />
         </config-file>
+        
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
             <provider
                 android:name="androidx.core.content.FileProvider"
@@ -85,6 +93,16 @@
         </config-file> 
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
+        </edit-config>
+        <edit-config file="AndroidManifest.xml"
+                     target="/manifest/application"
+                     mode="merge">
+            <application android:theme="@android:style/Theme.Translucent" android:excludeFromRecents="true"></application>
+        </edit-config>
+        <edit-config file="AndroidManifest.xml"
+                     target="/manifest/application/activity"
+                     mode="merge">
+            <activity android:theme="@android:style/Theme.Translucent" android:excludeFromRecents="true"></activity>
         </edit-config>
     </platform>
     <platform name="ios">
