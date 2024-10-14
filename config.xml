@@ -88,16 +88,6 @@
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
         </edit-config>
-        <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="merge">
-            <intent-filter android:label="📅 +Event111">
-                <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.SEND"/>
-                <action android:name="android.intent.action.PROCESS_TEXT" />
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"></category>
-                <data android:mimeType="text/plain"/>
-            </intent-filter>
-        </edit-config>
         <!--
         <edit-config file="AndroidManifest.xml"
                      target="/manifest/application"
