@@ -32,6 +32,11 @@
     <plugin name="cordova-plugin-custom-url-scheme" spec="^5.0.0">
         <variable name="URL_SCHEME" value="openapp" />
     </plugin>
+      <feature name="Custom URL scheme">
+        <param name="id" value="cordova-plugin-customurlscheme" />
+        <param name="url" value="https://github.com/EddyVerbruggen/Custom-URL-scheme.git" />
+        <variable name="URL_SCHEME" value="openapp" /><!-- change as appropriate -->
+      </feature>
     <platform name="android">
         <resource-file src="android-google-services.json" target="app/google-services.json" />
         <resource-file src="res/xml/file_paths.xml" target="app/src/main/res/xml/file_paths.xml" />
