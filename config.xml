@@ -88,6 +88,7 @@
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
         </edit-config>
+        <!--
         <edit-config file="AndroidManifest.xml"
                      target="/manifest/application"
                      mode="merge">
@@ -98,6 +99,7 @@
                      mode="merge">
             <activity android:theme="@android:style/Theme.Translucent" android:excludeFromRecents="true"></activity>
         </edit-config>
+        -->
     </platform>
     <platform name="ios">
         <preference name="deployment-target" value="11.0" />

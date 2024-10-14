@@ -78,6 +78,9 @@ jobs:
       - name: Add cordova-plugin-android-permissions
         run: |
           cordova plugin add cordova-plugin-android-permissions@1.1.5
+
+      - name: Add cordova intent
+        run: |
           cordova plugin add github:cordova-misc/cordova-webintent.git
           cordova plugin add https://github.com/napolitano/cordova-plugin-intent
 
