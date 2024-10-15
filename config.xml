@@ -47,6 +47,7 @@
         <icon density="mdpi" src="res/icon.png" />
         <icon density="hdpi" src="res/icon.png" />
         <icon density="xhdpi" src="res/icon.png" />
+        <!--
         <splash density="hdpi" src="res/splash_640x1136.png" />
         <splash density="ldpi" src="res/splash_640x1136.png" />
         <splash density="mdpi" src="res/splash_640x1136.png" />
@@ -59,6 +60,7 @@
         <splash density="port-ldpi" src="res/splash_640x1136.png" />
         <splash density="port-mdpi" src="res/splash_640x1136.png" />
         <splash density="port-xhdpi" src="res/splash_640x1136.png" />
+        -->
         <config-file target="AndroidManifest.xml" parent="/manifest">
             <uses-permission android:name="android.permission.INTERNET"/>
             <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -142,6 +144,7 @@
         <icon height="100" src="res/logo_120x120.png" width="100" />
         <icon height="167" src="res/logo_167x167.png" width="167" />
         <icon height="1024" src="res/logo_1024x1024.png" width="1024" />
+        <!--
         <splash height="480" src="res/splash_640x1136.png" width="320" />
         <splash height="960" src="res/splash_640x1136.png" width="640" />
         <splash height="1024" src="res/splash_640x1136.png" width="768" />
@@ -158,5 +161,6 @@
         <splash src="res/screen/ios/Default@3x~universal~anyany.png" />
         <splash src="res/screen/ios/Default@3x~universal~anycom.png" />
         <splash src="res/screen/ios/Default@3x~universal~comany.png" />
+        -->
     </platform>
 </widget>
