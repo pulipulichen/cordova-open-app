@@ -84,6 +84,7 @@ jobs:
           cordova plugin add github:cordova-misc/cordova-webintent.git
           cordova plugin add https://github.com/napolitano/cordova-plugin-intent
           cordova plugin add https://github.com/EddyVerbruggen/Custom-URL-scheme.git --variable URL_SCHEME=openapp
+          [[ -f /home/runner/work/cordova-open-app/cordova-open-app/platforms/android/app/src/main/res/xml/file_paths.xml ]] && rm /home/runner/work/cordova-open-app/cordova-open-app/platforms/android/app/src/main/res/xml/file_paths.xml
           cordova plugin add com.lampa.startapp
           
       - name: Build Android release APK
