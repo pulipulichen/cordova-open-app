@@ -29,6 +29,12 @@ function handle_intent(intent) {
   else if (intent_string.endsWith(`"data":"openapp://jkos"}`)) {
       return openJKOS()
   }
+  else if (intent_string.endsWith(`"data":"openapp://jkos/show"}`)) {
+      return openJKOSShow()
+  }
+  else if (intent_string.endsWith(`"data":"openapp://jkos/scan"}`)) {
+      return openJKOSScan()
+  }
   else if (intent_string.endsWith(`"data":"openapp://pxpay.plus"}`)) {
       return openPXPAYPlus()
   }
@@ -37,6 +43,9 @@ function handle_intent(intent) {
   }
   else if (intent_string.endsWith(`"data":"openapp://scan"}`)) {
       return openScanner()
+  }
+  else if (intent_string.endsWith(`"data":"openapp://twmp"}`)) {
+      return openTWMP()
   }
   return openScanner()
 
@@ -76,6 +85,95 @@ function openLinepayShow() {
   };
 
   openWebIntent(config)
+//   try {
+// //       alert('ok' + typeof(startApp) + typeof(startApp.set))
+// //     var sApp = startApp.set({
+// // //         "application":"com.jkos.app"
+// //         "action": "ACTION_MAIN",
+// // //         "uri": "fb://facewebmodal/f?href=https://www.facebook.com/GitHub"
+// //         "package": "tw.com.twmp.twhcewallet",
+// //         "intentstart":"startActivity",
+// //     }).start();
+//
+// //     var sApp = startApp.set({
+// // //         "component": ["tw.com.twmp.twhcewallet.","tw.com.twmp.twhcewallet.screen.SplashActivity_"],
+// //         "action": "ACTION_MAIN",
+// //         "category":"LAUNCHER",
+// //         "package": "tw.com.twmp.twhcewallet",
+// //         "intentstart":"startActivity",
+// //     }).start();
+//
+//
+//     // 臺灣支付，可用
+// //     var sApp = startApp.set({
+// //     "component": ["tw.com.twmp.twhcewallet","tw.com.twmp.twhcewallet.screen.SplashActivity_"],
+// //     }).start(callbackExitApp, callbackExitAppWithFail);
+//
+//     // 成功啟動特定Widget
+// //     var sApp = startApp.set({
+// //         "component": ["com.ss.popupWidget","com.ss.popupWidget.PopupWidgetActivity"],
+// //         "uri":"popupWidget://pid/1714868377626"
+// //     }).start(callbackExitApp, callbackExitAppWithFail);
+//
+// //           var sApp = startApp.set({
+// //         "component": ["com.ss.popupWidget","com.ss.popupWidget.PopupWidgetActivity"],
+// //         "uri":"popupWidget://pid/1728969164894"
+// //     }).start(callbackExitApp, callbackExitAppWithFail);
+//
+//
+//     // #Intent;action=android.intent.action.MAIN;category=com.android.launcher3.DEEP_SHORTCUT;launchFlags=0x10200000;package=com.jkos.app;component=com.jkos.app/.LoadActivity;S.shortcut_id=jkos_shortcut_show_qr_code;end
+// //     var sApp = startApp.set({
+// //         "action": "android.intent.action.MAIN",
+// //         "category": "com.android.launcher3.DEEP_SHORTCUT",
+// //         "flags":["FLAG_ACTIVITY_NEW_TASK"],
+// //         "package": "com.jkos.app",
+// //         "component": 'com.jkos.app/.LoadActivity',
+// //         "noParse": true
+// // //         "uri": "jkos://show_qr_code"
+// //     }, {
+// //         "shortcut_id": "jkos_shortcut_show_qr_code"
+// //     }).start(callbackExitApp, callbackExitAppWithFail);
+//
+// //     #Intent;action=android.intent.action.MAIN;category=com.android.launcher3.DEEP_SHORTCUT;launchFlags=0x10200000;package=tw.com.twmp.twhcewallet;component=tw.com.twmp.twhcewallet/.screen.SplashActivity_;S.shortcut_id=%E6%8E%83%E7%A2%BC%E6%94%B6%E4%BB%98;end
+// //     var sApp = startApp.set({
+// // //         "action": "android.intent.action.MAIN",
+// //         "category": "com.android.launcher3.DEEP_SHORTCUT",
+// //         "flags":["FLAG_ACTIVITY_NEW_TASK"],
+// //         "package": "tw.com.twmp.twhcewallet",
+// //         "component": ["tw.com.twmp.twhcewallet", "tw.com.twmp.twhcewallet.screen.SplashActivity_"],
+// //         "noParse": true
+// // //         "uri": "jkos://show_qr_code"
+// //     }, {
+// //         "shortcut_id": "%E6%8E%83%E7%A2%BC%E6%94%B6%E4%BB%98"
+// //     }).start(callbackExitApp, callbackExitAppWithFail);
+//
+// //     var intentExtras = {
+// //         "shortcut_id": "jkos_shortcut_show_qr_code"
+// //     };
+// //
+// //     window.plugins.intentShim.startActivity({
+// //         action: "android.intent.action.MAIN",
+// //         package: 'com.jkos.app',
+// //         component: 'com.jkos.app/.LoadActivity',
+// //         categories: ['com.android.launcher3.DEEP_SHORTCUT'],
+// //         flags: ["FLAG_ACTIVITY_NEW_TASK"],  // Equivalent to FLAG_ACTIVITY_NEW_TASK | FLAG_ACTIVITY_RESET_TASK_IF_NEEDED
+// //         extras: intentExtras
+// //     },
+// //     callbackExitApp, callbackExitAppWithFail);
+//
+// //      var sApp = startApp.set({
+// // //         "component": ["com.jkos.app","com.jkos.app.LoadActivity"],
+// // //          "action": "android.intent.action.MAIN",
+// //          "action": "ACTION_MAIN",
+// //          "component": ["com.jkos.app","com.jkos.app.LoadActivity"],
+// //         "uri":"intent://LoadActivity#Intent;action=android.intent.action.MAIN;category=com.android.launcher3.DEEP_SHORTCUT;launchFlags=0x10200000;package=com.jkos.app;S.shortcut_id=jkos_shortcut_show_qr_code;end
+// // "
+// //     }).start(callbackExitApp, callbackExitAppWithFail);
+
+//   } catch (e) {
+//       alert('Failed:' + JSON.stringify(e, null, 2));
+//     navigator.app.exitApp();
+//   }
 }
 
 function openLinepayScan() {
@@ -98,6 +196,20 @@ function openJKOS() {
   openWebIntent(config)
 }
 
+function openJKOSShow() {
+  startApp.set({
+    "component": ["com.ss.popupWidget","com.ss.popupWidget.PopupWidgetActivity"],
+    "uri":"popupWidget://pid/1728969164894"
+  }).start(callbackExitApp, callbackExitAppWithFail);
+}
+
+function openJKOSScan() {
+  startApp.set({
+    "component": ["com.ss.popupWidget","com.ss.popupWidget.PopupWidgetActivity"],
+    "uri":"popupWidget://pid/1728969164895"
+  }).start(callbackExitApp, callbackExitAppWithFail);
+}
+
 function openPXPAYPlus() {
   var config = {
       action: window.plugins.webintent.ACTION_VIEW,
@@ -118,11 +230,9 @@ function openCPCPay() {
 
 
 function openTWMP() {
-  var config = {
-      action: "com.google.zxing.client.android.SCAN",
-      category: "android.intent.category.DEFAULT",
-  };
-  openWebIntent(config)
+  startApp.set({
+    "component": ["tw.com.twmp.twhcewallet","tw.com.twmp.twhcewallet.screen.SplashActivity_"],
+  }).start(callbackExitApp, callbackExitAppWithFail);
 }
 
 function openScanner() {
