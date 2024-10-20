@@ -60,6 +60,12 @@ function handle_intent(intent) {
       return openPopupWidget()
   }
 
+
+  const componentRegex = /"data":"openapp:\/\/component\/[^\/]+\.[^\/]+\.[^\/]+\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
+  if (componentRegex.test(intent_string)) {
+    return openComponent(intent_string)
+  }
+
   const packageRegex = /"data":"openapp:\/\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
   if (packageRegex.test(intent_string)) {
     return openPackage(intent_string)
@@ -229,33 +235,49 @@ function openJKOSScan() {
 }
 
 function openPopupWidget() {
-  // var config = {
-  //     action: "android.intent.action.EDIT",
-  //     category: "android.intent.category.DEFAULT",
-  //     url: "com.pxpay.plus://zjdja"
-  // };
-  // openWebIntent(config)
-  var sApp = startApp.set({
-        "application":"com.ss.popupWidget"
-//         "action": "ACTION_MAIN",
-// //         "uri": "fb://facewebmodal/f?href=https://www.facebook.com/GitHub"
-//         "package": "tw.com.twmp.twhcewallet",
-//         "intentstart":"startActivity",
-    }).start();
+  startApp.set({
+    "component": ['com.ss.popupWidget', 'com.ss.popupWidget.MainActivity'],
+  }).start(callbackExitApp, callbackExitAppWithFail);
 }
 
 function openPackage(str) {
   const regex = /"data":"openapp:\/\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
-  
+
   const match = str.match(regex);
   
   if (match) {
       const extracted = match[1];
+//        alert(extracted)
+//       var sApp = startApp.set({
+//           "application": extracted
+//       }).start();
+//       console.log("Extracted part:", extracted);
+      let main = extracted.slice(0, extracted.lastIndexOf('.'))
 
-      var sApp = startApp.set({
-          "application": extracted
-      }).start();
-      console.log("Extracted part:", extracted);
+      startApp.set({
+//         "component": [main, extracted],
+//         "component": ['com.jkos.app.presentation.scanner.qrcode.view.', 'com.jkos.app.presentation.scanner.qrcode.view.QRCodeActivity2'],
+      }).start(callbackExitApp, callbackExitAppWithFail);
+
+  } else {
+      callbackExitAppWithFail("No Package: " + str)
+      return false
+  }
+}
+
+function openComponent(str) {
+  const regex = /"data":"openapp:\/\/component\/([^\/]+\.[^\/]+\.[^\/]+)\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
+
+  const match = str.match(regex);
+
+  if (match) {
+      const firstPart = match[1];
+      const secondPart = match[2];
+//       alert(firstPart + secondPart)
+      startApp.set({
+        "component": [firstPart, secondPart],
+      }).start(callbackExitApp, callbackExitAppWithFail);
+
   } else {
       callbackExitAppWithFail("No Package: " + str)
       return false
