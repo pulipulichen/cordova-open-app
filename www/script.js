@@ -50,6 +50,9 @@ function handle_intent(intent) {
   else if (intent_string.endsWith(`"data":"openapp://twmp/nfc"}`)) {
       return openTWMPNFC()
   }
+  else if (intent_string.endsWith(`"data":"openapp://easywallet"}`)) {
+      return openEasyWallet()
+  }
   return openScanner()
 
 //     navigator.app.exitApp();
@@ -226,6 +229,15 @@ function openCPCPay() {
   var config = {
       action: window.plugins.webintent.ACTION_VIEW,
       url: "cpcpay://"
+  };
+
+  openWebIntent(config)
+}
+
+function openEasyWallet() {
+  var config = {
+      action: window.plugins.webintent.ACTION_VIEW,
+      url: "https://epkawt.easycard.com.tw/prayingCash"
   };
 
   openWebIntent(config)
