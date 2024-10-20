@@ -47,6 +47,9 @@ function handle_intent(intent) {
   else if (intent_string.endsWith(`"data":"openapp://twmp"}`)) {
       return openTWMP()
   }
+  else if (intent_string.endsWith(`"data":"openapp://twmp/nfc"}`)) {
+      return openTWMPNFC()
+  }
   return openScanner()
 
 //     navigator.app.exitApp();
@@ -232,6 +235,13 @@ function openCPCPay() {
 function openTWMP() {
   startApp.set({
     "component": ["tw.com.twmp.twhcewallet","tw.com.twmp.twhcewallet.screen.SplashActivity_"],
+  }).start(callbackExitApp, callbackExitAppWithFail);
+}
+
+function openTWMPNFC() {
+  startApp.set({
+    "component": ["com.ss.popupWidget","com.ss.popupWidget.PopupWidgetActivity"],
+    "uri":"popupWidget://pid/1729447579951"
   }).start(callbackExitApp, callbackExitAppWithFail);
 }
 
