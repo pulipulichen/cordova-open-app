@@ -50,8 +50,14 @@ function handle_intent(intent) {
   else if (intent_string.endsWith(`"data":"openapp://twmp/nfc"}`)) {
       return openTWMPNFC()
   }
+  else if (intent_string.endsWith(`"data":"openapp://ipasspay"}`)) {
+      return openiPassPay()
+  } 
   else if (intent_string.endsWith(`"data":"openapp://easywallet"}`)) {
       return openEasyWallet()
+  }
+  else if (intent_string.endsWith(`"data":"openapp://popup-widget"}`)) {
+      return openPopupWidget()
   }
   return openScanner()
 
@@ -216,6 +222,13 @@ function openJKOSScan() {
   }).start(callbackExitApp, callbackExitAppWithFail);
 }
 
+function openPopupWidget() {
+  startApp.set({
+    "component": ["com.ss.popupWidget","com.ss.popupWidget.PopupWidgetActivity"],
+    "uri":"popupWidget://"
+  }).start(callbackExitApp, callbackExitAppWithFail);
+}
+
 function openPXPAYPlus() {
   var config = {
       action: window.plugins.webintent.ACTION_VIEW,
@@ -229,6 +242,15 @@ function openCPCPay() {
   var config = {
       action: window.plugins.webintent.ACTION_VIEW,
       url: "cpcpay://"
+  };
+
+  openWebIntent(config)
+}
+
+function openiPassPay() {
+  var config = {
+      action: window.plugins.webintent.ACTION_VIEW,
+      url: "ipassmoney://"
   };
 
   openWebIntent(config)
