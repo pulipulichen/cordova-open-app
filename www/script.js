@@ -59,6 +59,12 @@ function handle_intent(intent) {
   else if (intent_string.endsWith(`"data":"openapp://popup-widget"}`)) {
       return openPopupWidget()
   }
+
+  const packageRegex = /"data":"openapp:\/\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
+  if (packageRegex.test(intent_string)) {
+    return openPackage(intent_string)
+  }
+  
   return openScanner()
 
 //     navigator.app.exitApp();
@@ -223,10 +229,37 @@ function openJKOSScan() {
 }
 
 function openPopupWidget() {
-  startApp.set({
-    "component": ["com.ss.popupWidget","com.ss.popupWidget.PopupWidgetActivity"],
-    "uri":"popupWidget://"
-  }).start(callbackExitApp, callbackExitAppWithFail);
+  // var config = {
+  //     action: "android.intent.action.EDIT",
+  //     category: "android.intent.category.DEFAULT",
+  //     url: "com.pxpay.plus://zjdja"
+  // };
+  // openWebIntent(config)
+  var sApp = startApp.set({
+        "application":"com.ss.popupWidget"
+//         "action": "ACTION_MAIN",
+// //         "uri": "fb://facewebmodal/f?href=https://www.facebook.com/GitHub"
+//         "package": "tw.com.twmp.twhcewallet",
+//         "intentstart":"startActivity",
+    }).start();
+}
+
+function openPackage(str) {
+  const regex = /"data":"openapp:\/\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
+  
+  const match = str.match(regex);
+  
+  if (match) {
+      const extracted = match[1];
+
+      var sApp = startApp.set({
+          "application": extracted
+      }).start();
+      console.log("Extracted part:", extracted);
+  } else {
+      callbackExitAppWithFail("No Package: " + str)
+      return false
+  }
 }
 
 function openPXPAYPlus() {
