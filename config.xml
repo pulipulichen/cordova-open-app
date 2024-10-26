@@ -95,7 +95,11 @@
             </provider>
         </config-file> 
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
-            <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
+            <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true">
+                <meta-data
+                    android:name="asset_statements"
+                    android:resource="@string/asset_statements"/>
+            </applitation>
         </edit-config>
         <!--
         <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="merge">
