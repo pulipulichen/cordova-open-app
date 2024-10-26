@@ -119,8 +119,7 @@
                      target="/manifest/application/activity"
                      mode="merge">
             <activity android:excludeFromRecents="true"
-                android:exported="true"
-                android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" ></activity>
+                android:exported="true" ></activity>
         </edit-config>
         
     </platform>
