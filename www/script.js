@@ -20,54 +20,69 @@ function callbackExitAppWithFail(e) {
 
 function handle_intent(intent) {
   let intent_string = JSON.stringify(intent)
-  if (intent_string.endsWith(`"data":"openapp://linepay/show"}`)) {
+  if (intent_string.endsWith(`"data":"openapp://linepay/show"}`) || 
+      intent_string.endsWith(`"data":"https://open-app.pulipuli.info/linepay/show"}`)) {
       return openLinepayShow()
   }
-  else if (intent_string.endsWith(`"data":"openapp://linepay/scan"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://linepay/scan"}`) ||
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/linepay/scan"}`)) {
       return openLinepayScan()
   }
-  else if (intent_string.endsWith(`"data":"openapp://jkos"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://jkos"}`) ||
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/jkos"}`)) {
       return openJKOS()
   }
-  else if (intent_string.endsWith(`"data":"openapp://jkos/show"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://jkos/show"}`) ||
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/jkos/show"}`)) {
       return openJKOSShow()
   }
-  else if (intent_string.endsWith(`"data":"openapp://jkos/scan"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://jkos/scan"}`) ||
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/jkos/scan"}`)) {
       return openJKOSScan()
   }
-  else if (intent_string.endsWith(`"data":"openapp://pxpay.plus"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://pxpay.plus"}`) || 
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/pxpay.plus"}`)) {
       return openPXPAYPlus()
   }
-  else if (intent_string.endsWith(`"data":"openapp://cpcpay"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://cpcpay"}`) || 
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/cpcpay"}`)) {
       return openCPCPay()
   }
-  else if (intent_string.endsWith(`"data":"openapp://scan"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://scan"}`) || 
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/scan"}`)) {
       return openScanner()
   }
-  else if (intent_string.endsWith(`"data":"openapp://twmp"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://twmp"}`) || 
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/twmp"}`)) {
       return openTWMP()
   }
-  else if (intent_string.endsWith(`"data":"openapp://twmp/nfc"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://twmp/nfc"}`) || 
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/twmp/nfc"}`)) {
       return openTWMPNFC()
   }
-  else if (intent_string.endsWith(`"data":"openapp://ipasspay"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://ipasspay"}`) || 
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/ipasspay"}`)) {
       return openiPassPay()
   } 
-  else if (intent_string.endsWith(`"data":"openapp://easywallet"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://easywallet"}`) || 
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/easywallet"}`)) {
       return openEasyWallet()
   }
-  else if (intent_string.endsWith(`"data":"openapp://popup-widget"}`)) {
+  else if (intent_string.endsWith(`"data":"openapp://popup-widget"}`) || 
+           intent_string.endsWith(`"data":"https://open-app.pulipuli.info/popup-widget"}`)) {
       return openPopupWidget()
   }
 
 
   const componentRegex = /"data":"openapp:\/\/component\/[^\/]+\.[^\/]+\.[^\/]+\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
-  if (componentRegex.test(intent_string)) {
+  const componentRegexHttps = /"data":"https:\/\/open\-app\.pulipuli\.info\/component\/[^\/]+\.[^\/]+\.[^\/]+\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
+  if (componentRegex.test(intent_string) || componentRegexHttps.test(intent_string)) {
     return openComponent(intent_string)
   }
 
   const packageRegex = /"data":"openapp:\/\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
-  if (packageRegex.test(intent_string)) {
+  const packageRegexHttps = /"data":"https:\/\/open\-app\.pulipuli\.info\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
+  if (packageRegex.test(intent_string) || packageRegexHttps.test(intent_string)) {
     return openPackage(intent_string)
   }
   
