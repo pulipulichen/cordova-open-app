@@ -27,13 +27,13 @@
     <feature name="StatusBar">
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
-    <!--
+     
     <universal-links>
-        <host name="open_app.app.pulipuli.info" scheme="https">
+        <host name="open-app.pulipuli.info" scheme="https">
             <path url="/*" />
         </host>
     </universal-links>
-    -->
+    
     <content src="index.html" />
     <icon src="res/logo_120x120.png" />
     <platform name="android">
