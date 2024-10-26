@@ -1,5 +1,5 @@
 [{
   "relation": ["delegate_permission/common.handle_all_urls"],
-  "target" : { "namespace": "android_app", "package_name": "com.example.app",
+  "target" : { "namespace": "android_app", "package_name": "open_app.app.pulipuli.info",
                "sha256_cert_fingerprints": ["EA:5D:D5:92:DC:D2:87:79:D9:C9:62:75:93:7C:00:E2:69:B7:57:6E:E1:8B:12:89:8E:B3:DF:16:45:41:B5:5E"] }
 }]
