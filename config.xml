@@ -96,7 +96,7 @@
             <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
         </edit-config>
         <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="merge">
-            <intent-filter android:autoVerify="false">
+            <intent-filter android:autoVerify="false" />
         </edit-config>
         <!--
         <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="merge">
