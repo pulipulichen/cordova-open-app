@@ -111,7 +111,7 @@
         <edit-config file="AndroidManifest.xml"
                      target="/manifest/application/activity"
                      mode="merge">
-            <activity android:theme="@android:style/Theme.Translucent" android:excludeFromRecents="true"></activity>
+            <activity android:excludeFromRecents="true"></activity>
         </edit-config>
         
     </platform>
