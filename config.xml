@@ -28,7 +28,7 @@
         <param name="ios-package" onload="true" value="CDVStatusBar" />
     </feature>
     <universal-links>
-        <host name="open_app.app.pulipuli.info" scheme="https">
+        <host name="blog.pulipuli.info" scheme="https">
             <path url="/" />
         </host>
     </universal-links>
