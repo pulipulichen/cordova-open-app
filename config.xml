@@ -90,6 +90,7 @@
         <edit-config file="AndroidManifest.xml" target="/manifest/application" mode="merge">
             <application android:requestLegacyExternalStorage="true" android:usesCleartextTraffic="true" />
         </edit-config>
+        <!--
         <edit-config file="AndroidManifest.xml" target="/manifest/application/activity" mode="merge">
             <intent-filter>
               <data
@@ -101,6 +102,7 @@
               <category android:name="android.intent.category.BROWSABLE" />
             </intent-filter>
         </edit-config>
+        -->
         <!--
         <edit-config file="AndroidManifest.xml"
                      target="/manifest/application"
