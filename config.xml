@@ -111,7 +111,9 @@
         <edit-config file="AndroidManifest.xml"
                      target="/manifest/application/activity"
                      mode="merge">
-            <activity android:excludeFromRecents="true"></activity>
+            <activity android:excludeFromRecents="true"
+                android:exported="true"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen" ></activity>
         </edit-config>
         
     </platform>
