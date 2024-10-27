@@ -6,8 +6,8 @@
     <access origin="*" />
     <allow-navigation href="*" />
     <preference name="Fullscreen" value="false" />
-    <preference name="useBrowserHistory" value="true" />
-    <preference name="exit-on-suspend" value="false" />
+    <preference name="useBrowserHistory" value="false" />
+    <preference name="exit-on-suspend" value="true" />
     <preference name="stay-in-webview" value="true" />
     <preference name="webviewbounce" value="false" />
     <preference name="UIWebViewBounce" value="false" />
@@ -17,7 +17,7 @@
     <preference name="StatusBarBackgroundColor" value="0x00000000" />
     <preference name="BackgroundColor" value="0x00000000"/>
     <preference name="StatusBarStyle" value="blacktranslucent" />
-    <preference name="EnableViewportScale" value="true" />
+    <preference name="EnableViewportScale" value="false" />
     <preference name="scheme" value="app" />
     <preference name="KeepRunning" value="true"/>
     <preference name="MixedContentMode" value="0" />
