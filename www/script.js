@@ -1,6 +1,7 @@
 function ready() {
-  cordova.plugins.backgroundMode.enable();
-
+  cordova.plugins.backgroundMode.moveToBackground()
+//   alert(cordova.plugins.backgroundMode.isActive())
+//   alert('ok')
   window.plugins.intent.getCordovaIntent(function (intent) {
       try {
           handle_intent(intent);
@@ -13,9 +14,13 @@ function ready() {
 
 function callbackExitApp(e) {
 //     alert('OK:' + JSON.stringify(e, null, 2));
+//   cordova.plugins.backgroundMode.disable();
+  cordova.plugins.backgroundMode.moveToForeground();
   navigator.app.exitApp();
 }
 function callbackExitAppWithFail(e) {
+//   cordova.plugins.backgroundMode.disable();
+  cordova.plugins.backgroundMode.moveToForeground();
   alert('Failed:' + JSON.stringify(e, null, 2));
   navigator.app.exitApp();
 }
