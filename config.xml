@@ -19,6 +19,7 @@
     <preference name="StatusBarStyle" value="blacktranslucent" />
     <preference name="EnableViewportScale" value="true" />
     <preference name="scheme" value="app" />
+    <preference name="KeepRunning" value="true"/>
     <preference name="MixedContentMode" value="0" />
     <preference name="hostname" value="localhost" />
     <preference name="AndroidInsecureFileModeEnabled" value="true" />
