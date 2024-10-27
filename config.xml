@@ -32,9 +32,6 @@
         <host name="open-app.pulipuli.info" scheme="https">
             <path url="/*" />
         </host>
-        <host scheme="openapp">
-            <path url="/*" />
-        </host>
     </universal-links>
     
     <content src="index.html" />
