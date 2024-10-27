@@ -88,6 +88,7 @@ jobs:
           # cordova plugin add ionic-plugin-deeplinks --variable URL_SCHEME=openapp --variable DEEPLINK_SCHEME=https --variable DEEPLINK_HOST=open-app.pulipuli.info --variable ANDROID_PATH_PREFIX=/
           [[ -f /home/runner/work/cordova-open-app/cordova-open-app/platforms/android/app/src/main/res/xml/file_paths.xml ]] && rm /home/runner/work/cordova-open-app/cordova-open-app/platforms/android/app/src/main/res/xml/file_paths.xml
           cordova plugin add com.lampa.startapp
+          cordova plugin add cordova-plugin-background-mode
           
       - name: Build Android release APK
         run: |

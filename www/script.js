@@ -1,4 +1,6 @@
 function ready() {
+  cordova.plugins.backgroundMode.enable();
+
   window.plugins.intent.getCordovaIntent(function (intent) {
       try {
           handle_intent(intent);
@@ -20,7 +22,7 @@ function callbackExitAppWithFail(e) {
 
 function handle_intent(intent) {
   let intent_string = JSON.stringify(intent)
-  if (intent_string.endsWith(`"data":"openapp://linepay/show"}`) || 
+  if (intent_string.endsWith(`"data":"openapp://linepay/show"}`) ||
       intent_string.endsWith(`"data":"https://open-app.pulipuli.info/linepay/show"}`)) {
       return openLinepayShow()
   }
@@ -40,35 +42,35 @@ function handle_intent(intent) {
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/jkos/scan"}`)) {
       return openJKOSScan()
   }
-  else if (intent_string.endsWith(`"data":"openapp://pxpay.plus"}`) || 
+  else if (intent_string.endsWith(`"data":"openapp://pxpay.plus"}`) ||
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/pxpay.plus"}`)) {
       return openPXPAYPlus()
   }
-  else if (intent_string.endsWith(`"data":"openapp://cpcpay"}`) || 
+  else if (intent_string.endsWith(`"data":"openapp://cpcpay"}`) ||
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/cpcpay"}`)) {
       return openCPCPay()
   }
-  else if (intent_string.endsWith(`"data":"openapp://scan"}`) || 
+  else if (intent_string.endsWith(`"data":"openapp://scan"}`) ||
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/scan"}`)) {
       return openScanner()
   }
-  else if (intent_string.endsWith(`"data":"openapp://twmp"}`) || 
+  else if (intent_string.endsWith(`"data":"openapp://twmp"}`) ||
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/twmp"}`)) {
       return openTWMP()
   }
-  else if (intent_string.endsWith(`"data":"openapp://twmp/nfc"}`) || 
+  else if (intent_string.endsWith(`"data":"openapp://twmp/nfc"}`) ||
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/twmp/nfc"}`)) {
       return openTWMPNFC()
   }
-  else if (intent_string.endsWith(`"data":"openapp://ipasspay"}`) || 
+  else if (intent_string.endsWith(`"data":"openapp://ipasspay"}`) ||
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/ipasspay"}`)) {
       return openiPassPay()
-  } 
-  else if (intent_string.endsWith(`"data":"openapp://easywallet"}`) || 
+  }
+  else if (intent_string.endsWith(`"data":"openapp://easywallet"}`) ||
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/easywallet"}`)) {
       return openEasyWallet()
   }
-  else if (intent_string.endsWith(`"data":"openapp://popup-widget"}`) || 
+  else if (intent_string.endsWith(`"data":"openapp://popup-widget"}`) ||
            intent_string.endsWith(`"data":"https://open-app.pulipuli.info/popup-widget"}`)) {
       return openPopupWidget()
   }
@@ -85,7 +87,7 @@ function handle_intent(intent) {
   if (packageRegex.test(intent_string) || packageRegexHttps.test(intent_string)) {
     return openPackage(intent_string)
   }
-  
+
   return openScanner()
 
 //     navigator.app.exitApp();
@@ -256,13 +258,18 @@ function openPopupWidget() {
 }
 
 function openPackage(str) {
-  const regex = /"data":"openapp:\/\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
+  let regex = /"data":"openapp:\/\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
+
+  const packageRegex = /"data":"openapp:\/\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
+  if (packageRegex.test(str) == false) {
+    regex = /"data":"https:\/\/open\-app\.pulipuli\.info\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
+  }
 
   const match = str.match(regex);
-  
+
   if (match) {
       const extracted = match[1];
-//        alert(extracted)
+//       alert(extracted)
 //       var sApp = startApp.set({
 //           "application": extracted
 //       }).start();
@@ -272,6 +279,7 @@ function openPackage(str) {
       startApp.set({
 //         "component": [main, extracted],
 //         "component": ['com.jkos.app.presentation.scanner.qrcode.view.', 'com.jkos.app.presentation.scanner.qrcode.view.QRCodeActivity2'],
+        "package": extracted
       }).start(callbackExitApp, callbackExitAppWithFail);
 
   } else {
@@ -281,7 +289,12 @@ function openPackage(str) {
 }
 
 function openComponent(str) {
-  const regex = /"data":"openapp:\/\/component\/([^\/]+\.[^\/]+\.[^\/]+)\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
+  let regex = /"data":"openapp:\/\/component\/([^\/]+\.[^\/]+\.[^\/]+)\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
+
+  const componentRegex = /"data":"openapp:\/\/component\/[^\/]+\.[^\/]+\.[^\/]+\/[^\/]+\.[^\/]+\.[^\/]+"}$/;
+  if (componentRegex.test(str) == false) {
+    regex = /"data":"https:\/\/open\-app\.pulipuli\.info\/component\/([^\/]+\.[^\/]+\.[^\/]+)\/([^\/]+\.[^\/]+\.[^\/]+)"}$/;
+  }
 
   const match = str.match(regex);
 
