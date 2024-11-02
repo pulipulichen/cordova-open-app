@@ -478,16 +478,16 @@ function ready() {
   
     function openScanner() {
       // 掃描
-  //     var config = {
-  //         action: "com.google.zxing.client.android.SCAN",
-  //         category: "android.intent.category.DEFAULT",
-  //     };
-  //     openWebIntent(config)
+      var config = {
+          action: "com.google.zxing.client.android.SCAN",
+          category: "android.intent.category.DEFAULT",
+      };
+      openWebIntent(config)
   
-        var sApp = startApp.set({
-            "package": "com.google.zxing.client.android.SCAN",
-    //         "uri": "jkos://show_qr_code"
-        }).start(callbackExitApp, callbackExitAppWithFail);
+    //     var sApp = startApp.set({
+    //         "package": "com.google.zxing.client.android.SCAN",
+    // //         "uri": "jkos://show_qr_code"
+    //     }).start(callbackExitApp, callbackExitAppWithFail);
   
     //     var sApp = startApp.set({
     //         "action": "android.intent.action.MAIN",
