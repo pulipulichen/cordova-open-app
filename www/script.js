@@ -482,7 +482,23 @@ function ready() {
           action: "com.google.zxing.client.android.SCAN",
           category: "android.intent.category.DEFAULT",
       };
-      openWebIntent(config)
+      // openWebIntent(config)
+
+      window.plugins.webintent.startActivity(config,
+        callbackExitApp,
+        (e) => {
+          cordova.plugins.backgroundMode.moveToForeground();
+          alert('Failed:' + JSON.stringify(e, null, 2));
+
+          // navigator.app.exitApp();
+          config = {
+            action: window.plugins.webintent.ACTION_VIEW,
+            url: `https://play.google.com/store/apps/details?id=com.google.zxing.client.android`
+          };
+
+          openWebIntent(config)
+        }
+    );
   
     //     var sApp = startApp.set({
     //         "package": "com.google.zxing.client.android.SCAN",
