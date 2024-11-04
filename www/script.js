@@ -502,7 +502,8 @@ function ready() {
   
         startApp.set({
           // action: window.plugins.webintent.ACTION_VIEW,
-          "package": "com.atharok.barcodescanner",
+          // "package": "com.atharok.barcodescanner",
+          "component": ["com.atharok.barcodescanner", "com.atharok.barcodescanner.presentation.views.activities.MainActivity"],
     //         "uri": "jkos://show_qr_code"
         }).start(callbackExitApp, (e) => {
             cordova.plugins.backgroundMode.moveToForeground();
