@@ -414,9 +414,9 @@ function ready() {
           // alert(match[0])
           let url = match[0].slice(8, -2)
           // alert(url)
-          let input = url.slice(url.indexOf('/scheme/') + 8)
-          const firstPart = input.slice(0, input.indexOf('/'));
-          const secondPart = input.slice(input.indexOf('/') + 1);
+          url = url.slice(url.indexOf('/scheme/') + 8)
+          // const firstPart = input.slice(0, input.indexOf('/'));
+          // const secondPart = input.slice(input.indexOf('/') + 1);
           // alert(`${firstPart}://${secondPart}`)
           // startApp.set({
           //   action: window.plugins.webintent.ACTION_VIEW,
@@ -427,7 +427,7 @@ function ready() {
           // }).start(callbackExitApp, callbackExitAppWithFail);
           var config = {
             action: window.plugins.webintent.ACTION_VIEW,
-            url: `${firstPart}://${secondPart}`
+            url: url
           };
       
           openWebIntent(config)
