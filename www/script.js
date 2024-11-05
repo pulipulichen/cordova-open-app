@@ -425,6 +425,7 @@ function ready() {
           //   // url: "sip:0911317211"
           //   url: `${firstPart}://${secondPart}`
           // }).start(callbackExitApp, callbackExitAppWithFail);
+          alert(url)
           var config = {
             action: window.plugins.webintent.ACTION_VIEW,
             url: url
