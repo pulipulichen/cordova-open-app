@@ -1,7 +1,7 @@
 function ready() {
   //     cordova.plugins.backgroundMode.moveToBackground()
     //   alert(cordova.plugins.backgroundMode.isActive())
-    //   alert('ok')
+      alert('ok')
       window.plugins.intent.getCordovaIntent(function (intent) {
           try {
               handle_intent(intent);
@@ -89,8 +89,8 @@ function ready() {
         return openPopupWidgetIntent(intent_string)
       }
   
-      const schemeRegex = /"data":"openapp:\/\/scheme\/[\w.-]+\/[\w.-]+"}$/;
-      const schemeRegexHttps = /"data":"https:\/\/open\-app\.pulipuli\.info\/scheme\/[\w.-]+\/[\w.-]+"}$/;
+      const schemeRegex = /"data":"openapp:\/\/scheme\/.*+"}$/;
+      const schemeRegexHttps = /"data":"https:\/\/open\-app\.pulipuli\.info\/scheme\/.*+"}$/;
   //     alert(intent_string)
       if (schemeRegex.test(intent_string) || schemeRegexHttps.test(intent_string)) {
         return openSchemeIntent(intent_string)
@@ -399,11 +399,11 @@ function ready() {
     }
   
     function openSchemeIntent(str) {
-      let regex = /"data":"openapp:\/\/scheme\/[\w.-]+\/[\w.-]+"}$/;
+      let regex = /"data":"openapp:\/\/scheme\/.*"}$/;
   
-      const componentRegex = /"data":"openapp:\/\/scheme\/[\w.-]+\/[\w.-]+"}$/;
+      const componentRegex = /"data":"openapp:\/\/scheme\/.*"}$/;
       if (componentRegex.test(str) == false) {
-        regex = /"data":"https:\/\/open\-app\.pulipuli\.info\/scheme\/[\w.-]+\/[\w.-]+"}$/;
+        regex = /"data":"https:\/\/open\-app\.pulipuli\.info\/scheme\/.*"}$/;
       }
   
       // https://open-app.pulipuli.info/scheme/lbpaytax-00501/www.landbank.com.tw
