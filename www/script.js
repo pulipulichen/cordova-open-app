@@ -1,7 +1,7 @@
 function ready() {
   //     cordova.plugins.backgroundMode.moveToBackground()
     //   alert(cordova.plugins.backgroundMode.isActive())
-      alert('ok')
+      // alert('ok')
       window.plugins.intent.getCordovaIntent(function (intent) {
           try {
               handle_intent(intent);
@@ -89,10 +89,11 @@ function ready() {
         return openPopupWidgetIntent(intent_string)
       }
   
-      const schemeRegex = /"data":"openapp:\/\/scheme\/.*+"}$/;
-      const schemeRegexHttps = /"data":"https:\/\/open\-app\.pulipuli\.info\/scheme\/.*+"}$/;
+      const schemeRegex = /"data":"openapp:\/\/scheme\/.*"}$/;
+      const schemeRegexHttps = /"data":"https:\/\/open\-app\.pulipuli\.info\/scheme\/.*"}$/;
   //     alert(intent_string)
       if (schemeRegex.test(intent_string) || schemeRegexHttps.test(intent_string)) {
+        // alert('scheme')
         return openSchemeIntent(intent_string)
       }
   
@@ -410,16 +411,26 @@ function ready() {
       const match = str.match(regex);
   
       if (match) {
-  //         alert(match[0])
-          let input = match[0].slice(match[0].indexOf('/scheme/') + 8, -2)
+          // alert(match[0])
+          let url = match[0].slice(8, -2)
+          // alert(url)
+          let input = url.slice(url.indexOf('/scheme/') + 8)
           const firstPart = input.slice(0, input.indexOf('/'));
           const secondPart = input.slice(input.indexOf('/') + 1);
-  //         alert(`${firstPart}://${secondPart}`)
-          startApp.set({
+          // alert(`${firstPart}://${secondPart}`)
+          // startApp.set({
+          //   action: window.plugins.webintent.ACTION_VIEW,
+          //   // action: "com.google.android.gms.matchstick.call.action.CALL",
+          //   category: "android.intent.category.DEFAULT",
+          //   // url: "sip:0911317211"
+          //   url: `${firstPart}://${secondPart}`
+          // }).start(callbackExitApp, callbackExitAppWithFail);
+          var config = {
             action: window.plugins.webintent.ACTION_VIEW,
             url: `${firstPart}://${secondPart}`
-          }).start(callbackExitApp, callbackExitAppWithFail);
-  
+          };
+      
+          openWebIntent(config)
       } else {
           callbackExitAppWithFail("No Package: " + str)
           return false
